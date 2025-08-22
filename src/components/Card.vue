@@ -29,7 +29,7 @@ defineProps(
 				</b>
 			</div>
 			<button class="cursor-pointer" @click="onClickAdd">
-				<img :src="isAdded? '/plus.svg' :'/checked.svg'" alt="Plus">
+				<img :src="isAdded? '/checked.svg' :'/plus.svg'" alt="Plus">
 			</button>
 		</div>
 	</div>
