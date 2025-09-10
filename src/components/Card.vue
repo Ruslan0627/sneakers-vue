@@ -1,17 +1,15 @@
 <script setup>
-defineProps(
-	{
+import { inject } from "vue"
+const props =	defineProps({
+		id:Number,
 		imageUrl:String,
 		title:String,
 		price:Number,
 		isFavorite:Boolean,
-		isAdded:Boolean,
-		onClickAdd:Function,
-		onClickFavorite:Function
-	})
-	function ClickAdd () {
-	alert("добавить")
-	}
+		onClickFavorite:Function,
+		onClickAdd:Boolean,
+})
+
 </script>
 <template>
 	<div
