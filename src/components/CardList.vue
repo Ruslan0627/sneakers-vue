@@ -1,26 +1,17 @@
 <script setup>
-import { inject } from "vue";
 import Card from "./Card.vue";
 
 defineProps({
- items: Array
+ items: Array,
+ isFavorites:Boolean
 })
 
-const onClickAdd = () => {
-	alert('добавитьа')
-}
+const emit = defineEmits(['addToFavorite',"addToCart"])
 
-const emit = defineEmits(['addToFavorite'])
-
-function onClikAdd(params) {
-	
-}
-
-const addToFavorite = inject('addToFavorite') 
 </script>
 <template>
 	<div class="p-10">
-		<div class="grid grid-cols-3 gap-4">
+		<div class="grid grid-cols-3 gap-4" v-auto-animate>
 			<Card 
 			v-for="item in items"
 			:key="item.id"
@@ -28,9 +19,10 @@ const addToFavorite = inject('addToFavorite')
 			:title="item.title" 
 			:price="item.price" 
 			:image-url="item.imageUrl" 
-			:on-click-add ="onClickAdd" 
-			:on-click-favorite = "() => addToFavorite(item)"
+			:on-click-add ="isFavorites? null :() => emit('addToCart', item)" 
+			:on-click-favorite = "isFavorites? null :() => emit('addToFavorite',item)"
 			:isFavorite = "item.isFavorite"
+			:isAdded = "item.isAdded"
 			/>
 		</div>
 	</div>
